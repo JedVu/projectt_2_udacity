@@ -59,6 +59,7 @@ def tokenize(text):
 def build_model():
     """
         This function defines a pipeline for a model: vectorize text, tfidf transform and model
+        Use GridSearchCV to find the best parameters
         input: None
         output: pipeline
     """
@@ -67,6 +68,7 @@ def build_model():
         ('tfidf', TfidfTransformer()),
         ('moc', MultiOutputClassifier(RandomForestClassifier()))
     ])
+    
     parameters = {
         'clf__estimator__n_estimators' : [50, 100]
     }
